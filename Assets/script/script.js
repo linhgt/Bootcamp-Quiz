@@ -7,6 +7,6 @@ $(document).ready(function(){
         event.preventDefault();
         initialScreen.css("display", "none");
         $("#main-quiz").css("display", "block");
-        $(".starting-container").css("text-align", "initial");
+        $(".container").css("text-align", "initial");
     });
 });
