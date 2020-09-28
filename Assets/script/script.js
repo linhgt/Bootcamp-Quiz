@@ -2,9 +2,11 @@
 //Using JQuery
 $(document).ready(function(){
     var startBtn = $("#start-button");
-    var mainScreen = $(".starting-container");
+    var initialScreen = $("#initial-page");
     startBtn.on("click", function(event){
         event.preventDefault();
-        mainScreen.css("display", "none");
+        initialScreen.css("display", "none");
+        $("#main-quiz").css("display", "block");
+        $(".starting-container").css("text-align", "initial");
     });
 });
