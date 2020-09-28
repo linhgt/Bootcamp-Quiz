@@ -2,11 +2,14 @@
 //Using JQuery
 $(document).ready(function(){
     var startBtn = $("#start-button");
-    var initialScreen = $("#initial-page");
+
+    //Add event listener to the startBtn
+    //Once clicked, the initial page is removed
+    //The questions are displayed on the screen
     startBtn.on("click", function(event){
         event.preventDefault();
-        initialScreen.css("display", "none");
-        $("#main-quiz").css("display", "block");
+        $("#initial-page").css("display", "none");
+        $("#main-question").css("display", "block");
         $(".container").css("text-align", "initial");
     });
 });
