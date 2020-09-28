@@ -1,6 +1,5 @@
 .highScore{
     display:inline;
-    position:absolute;
 }
 
 .timer{
@@ -8,4 +7,11 @@
     position:absolute;
     right:0;
     padding-right: 10px;
+}
+
+.starting-container{
+    margin:auto;
+    width:60%;
+    padding:10px;
+    text-align: center;
 }
