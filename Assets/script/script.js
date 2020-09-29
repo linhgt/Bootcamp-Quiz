@@ -58,19 +58,22 @@ $(document).ready(function(){
     //Timer count down from 99 to 0
     function countDown(){
         renderTime();
-        if(secondElapsed > 0)
-        {
-            //one second in timer is equal to one second in real time
-            interval = setInterval(function(){
+        //one second in timer is equal to one second in real time
+        interval = setInterval(function(){
+            if(secondElapsed > 0)
+            {
                 secondElapsed--;
-    
-                renderTime();
-            }, 1000);
-        }
-        else
-        {
+
+                renderTime();   
+            }
+            else{
+                clearInterval(interval);
+            }
+        }, 1000);
+        /*{
             clearInterval(interval);
-        }        
+            return;
+        }*/        
     }
     //Add event listener to the startBtn
     //Once clicked, the initial page is removed
