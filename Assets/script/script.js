@@ -1,7 +1,8 @@
 $(document).ready(function(){
     var startBtn = $("#start-button");
-    var timer = $("#countdown");
 
+    //Timer is initialized at 99, and count to 0
+    var timer = $("#countdown");
     var secondElapsed = 99;
     var interval;
 
@@ -49,14 +50,17 @@ $(document).ready(function(){
         },
     ];
 
+    //Print the second to the screen
     function renderTime(){
         timer.text(secondElapsed);
     }
 
+    //Timer count down from 99 to 0
     function countDown(){
         renderTime();
         if(secondElapsed > 0)
         {
+            //one second in timer is equal to one second in real time
             interval = setInterval(function(){
                 secondElapsed--;
     
