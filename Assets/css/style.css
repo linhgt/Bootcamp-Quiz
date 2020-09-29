@@ -9,13 +9,13 @@
     padding-right: 10px;
 }
 
-.container{
+.quiz-container{
     margin:auto;
     width:60%;
     padding:10vh 10px 10px 10px;
     text-align: center;
 }
 
-#main-quiz{
+#main-question{
     display:none;
 }
