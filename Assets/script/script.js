@@ -1,5 +1,9 @@
 $(document).ready(function(){
     var startBtn = $("#start-button");
+    var timer = $("#countdown");
+
+    var secondElapsed = 99;
+    var interval;
 
     //List of questions
     var Questions = [
@@ -45,11 +49,32 @@ $(document).ready(function(){
         },
     ];
 
+    function renderTime(){
+        timer.text(secondElapsed);
+    }
+
+    function countDown(){
+        renderTime();
+        if(secondElapsed > 0)
+        {
+            interval = setInterval(function(){
+                secondElapsed--;
+    
+                renderTime();
+            }, 1000);
+        }
+        else
+        {
+            clearInterval(interval);
+        }        
+    }
     //Add event listener to the startBtn
     //Once clicked, the initial page is removed
     //The questions are displayed on the screen
     startBtn.on("click", function(event){
         event.preventDefault();
+        countDown();
+
         $("#initial-page").css("display", "none");
         $("#main-question").css("display", "block");
         $(".quiz-container").css("text-align", "initial");
