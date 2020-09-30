@@ -1,10 +1,15 @@
 $(document).ready(function(){
     var startBtn = $("#start-button");
+    var questionTitle = $("#question");
+    var answerChoices =$("#answers");
+    var currentQuestionNumber=0;
 
     //Timer is initialized at 99, and count to 0
     var timer = $("#countdown");
     var secondElapsed = 99;
     var interval;
+    var quizEnd = false;
+    var choiceMade = false;
 
     //List of questions
     var Questions = [
@@ -31,22 +36,22 @@ $(document).ready(function(){
         {
             question:"When was internet invented?",
             answers:{
-                a:"1980",
-                b:"1983",
-                c:"1985",
-                d:"1987",
+                A:"1980",
+                B:"1983",
+                C:"1985",
+                D:"1987",
             },
-            correctAnswer:"b"
+            correctAnswer:"B"
         },
         {
             question:"What is the name of the hottest pepper in the world?",
             answers:{
-                a:"Ghost pepper",
-                b:"Trinidad Moruga Scorpion",
-                c:"7 Pot Douglah",
-                d:"Carolina reaper"
+                A:"Ghost pepper",
+                B:"Trinidad Moruga Scorpion",
+                C:"7 Pot Douglah",
+                D:"Carolina reaper"
             },
-            correctAnswer:"d"
+            correctAnswer:"D"
         },
     ];
 
@@ -69,18 +74,73 @@ $(document).ready(function(){
             else{
                 clearInterval(interval);
             }
-        }, 1000);
-        /*{
-            clearInterval(interval);
-            return;
-        }*/        
+        }, 1000); 
     }
+
+    //Start the quiz
+    function quizStart()
+    {
+        buildQuiz();
+    }
+
+    //Bind event listener to the answer choices
+    answerChoices.on("click", "button", function(event){
+        event.preventDefault();
+        if(event.target.value !== currentQuestion.correctAnswer)
+        {
+            //The choice made is incorrect
+            var result = '<hr/><h3>Incorrect!</h3>';
+            $("#ding").append(result);
+        }
+        else
+        {
+            //The choice made is correct
+            var result = '<hr/><h3>Correct!</h3>';
+            $("#ding").append(result);
+        }
+
+        //Hide the alert after 1 seconds
+        setTimeout(function(){
+            $("#ding").empty()}, 1000);
+
+        if(currentQuestionNumber < Questions.length-1)
+        {
+            //If there are some questions left
+            //Print the next question
+            currentQuestionNumber++;
+            buildQuiz();
+        }
+        else
+        {
+            console.log("This is the end of the quiz");
+        }
+    });
+
+    function buildQuiz(){
+        //empty the screen
+        questionTitle.text("");
+        answerChoices.empty();
+
+        //Get the current question
+        currentQuestion = Questions[currentQuestionNumber];
+        questionTitle.text(currentQuestion.question);
+        for(letter in currentQuestion.answers)
+        {
+            //For each answer choice, create a Bootstrap button that holds the letter as value for retrieving purpose later
+            //The button is appended to the answers div
+            var answerBtn = '<button class="btn btn-dark" style="margin-bottom:5px;" value='+letter+'>'+letter+'.'+currentQuestion.answers[letter]+'</button><br/>';
+            answerChoices.append(answerBtn);
+        }
+
+    }
+
     //Add event listener to the startBtn
     //Once clicked, the initial page is removed
     //The questions are displayed on the screen
     startBtn.on("click", function(event){
         event.preventDefault();
         countDown();
+        quizStart();
 
         $("#initial-page").css("display", "none");
         $("#main-question").css("display", "block");
