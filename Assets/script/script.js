@@ -60,6 +60,7 @@ $(document).ready(function(){
         timer.text(secondElapsed);
     }
 
+    //display the final screen and the score of the player
     function finishQuiz()
     {
         $("#main-question").addClass("hide");
