@@ -164,6 +164,7 @@ $(document).ready(function(){
 
         //Store player in local storage
         localStorage.setItem(playerIni, playerScore);
+        window.location = "highscore.html";
     }); 
 
     //Add event listener to the startBtn

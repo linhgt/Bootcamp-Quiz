@@ -1,0 +1,23 @@
+.highscore-container{
+    margin:auto;
+    width:60%;
+    padding:10vh 10px 10px 10px;
+}
+
+#playerList{
+    list-style-type: none;
+    padding: 0;
+    background-color: white;
+}
+
+#playerList li{
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color:lightgrey;
+    color: black;
+    font-size: 1.5em;
+    line-height: 1.5;
+    border-radius:15px;
+}
