@@ -4,7 +4,12 @@ $(document).ready(function(){
     var answerChoices =$("#answers");
     var currentQuestionNumber=0;
     var correctSound = new Audio("../Bootcamp-Quiz/Assets/sound/ding-sound-effect_2.mp3");
-    var incorrectsound = new Audio("../Bootcamp-Quiz/Assets/sound/roblox-death-sound_1.mp3")
+    var incorrectsound = new Audio("../Bootcamp-Quiz/Assets/sound/roblox-death-sound_1.mp3");
+
+    //the final score
+    var score = $("#score");
+
+    var form = document.querySelector("form");
     
     //Timer is initialized at 99, and count to 0
     var timer = $("#countdown");
@@ -148,6 +153,18 @@ $(document).ready(function(){
         }
 
     }
+
+    //Add event listener to the submit button
+    form.addEventListener("submit", function(event){
+        event.preventDefault();
+        //console.log(event.target.children[1].value);
+        //console.log(score.text());
+        var playerIni = event.target.children[1].value;
+        var playerScore = score.text();
+
+        //Store player in local storage
+        localStorage.setItem(playerIni, playerScore);
+    }); 
 
     //Add event listener to the startBtn
     //Once clicked, the initial page is removed
