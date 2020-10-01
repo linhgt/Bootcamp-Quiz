@@ -4,7 +4,7 @@ $(document).ready(function(){
     var answerChoices =$("#answers");
     var currentQuestionNumber=0;
     var correctSound = new Audio("../Bootcamp-Quiz/Assets/sound/ding-sound-effect_2.mp3");
-    var incorrectsound = new Audio("../Bootcamp/Assets/sound/roblox-death-sound_1.mp3")
+    var incorrectsound = new Audio("../Bootcamp-Quiz/Assets/sound/roblox-death-sound_1.mp3")
     
     //Timer is initialized at 99, and count to 0
     var timer = $("#countdown");
@@ -90,8 +90,11 @@ $(document).ready(function(){
         if(event.target.value !== currentQuestion.correctAnswer)
         {
             //The choice made is incorrect
+            //Penalize by subtracting 10 seconds from the timer
             var result = '<hr/><h3>Incorrect!</h3>';
             $("#ding").append(result);
+            secondElapsed = secondElapsed - 10;
+            timer.text(secondElapsed);
             incorrectsound.play();
         }
         else
