@@ -8,9 +8,8 @@ $(document).ready(function(){
     
     //Timer is initialized at 99, and count to 0
     var timer = $("#countdown");
-    var secondElapsed = 9;
+    var secondElapsed = 99;
     var interval;
-    var quizEnd = false;
 
     //List of questions
     var Questions = [
@@ -65,6 +64,7 @@ $(document).ready(function(){
     {
         $("#main-question").addClass("hide");
         $("#final-screen").removeClass("hide");
+        $("#score").text(secondElapsed);
     }
 
     //Timer count down from 99 to 0
@@ -80,6 +80,7 @@ $(document).ready(function(){
             }
             else{
                 clearInterval(interval);
+                finishQuiz();
             }
         }, 1000); 
     }
@@ -124,9 +125,8 @@ $(document).ready(function(){
         }
         else
         {
-            quizEnd = true;
-            console.log("This is the end of the quiz");
             finishQuiz();
+            clearInterval(interval);
         }
     });
 
