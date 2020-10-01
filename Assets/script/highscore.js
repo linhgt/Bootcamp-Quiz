@@ -15,7 +15,7 @@ $(document).ready(function(){
         window.location ="index.html";
     });
 
-    $("clear-highscore").on("click", function(){
+    $("#clear-highscore").on("click", function(){
         playerList.empty();
         localStorage.clear();
     });
