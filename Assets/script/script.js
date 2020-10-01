@@ -3,13 +3,14 @@ $(document).ready(function(){
     var questionTitle = $("#question");
     var answerChoices =$("#answers");
     var currentQuestionNumber=0;
-
+    var correctSound = new Audio("../Bootcamp-Quiz/Assets/sound/ding-sound-effect_2.mp3");
+    var incorrectsound = new Audio("../Bootcamp/Assets/sound/roblox-death-sound_1.mp3")
+    
     //Timer is initialized at 99, and count to 0
     var timer = $("#countdown");
     var secondElapsed = 99;
     var interval;
     var quizEnd = false;
-    var choiceMade = false;
 
     //List of questions
     var Questions = [
@@ -91,12 +92,14 @@ $(document).ready(function(){
             //The choice made is incorrect
             var result = '<hr/><h3>Incorrect!</h3>';
             $("#ding").append(result);
+            incorrectsound.play();
         }
         else
         {
             //The choice made is correct
             var result = '<hr/><h3>Correct!</h3>';
             $("#ding").append(result);
+            correctSound.play();
         }
 
         //Hide the alert after 1 seconds
@@ -112,6 +115,7 @@ $(document).ready(function(){
         }
         else
         {
+            quizEnd = true;
             console.log("This is the end of the quiz");
         }
     });
