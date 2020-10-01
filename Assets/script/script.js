@@ -8,7 +8,7 @@ $(document).ready(function(){
     
     //Timer is initialized at 99, and count to 0
     var timer = $("#countdown");
-    var secondElapsed = 99;
+    var secondElapsed = 9;
     var interval;
     var quizEnd = false;
 
@@ -59,6 +59,12 @@ $(document).ready(function(){
     //Print the second to the screen
     function renderTime(){
         timer.text(secondElapsed);
+    }
+
+    function finishQuiz()
+    {
+        $("#main-question").addClass("hide");
+        $("#final-screen").removeClass("hide");
     }
 
     //Timer count down from 99 to 0
@@ -120,6 +126,7 @@ $(document).ready(function(){
         {
             quizEnd = true;
             console.log("This is the end of the quiz");
+            finishQuiz();
         }
     });
 
@@ -149,8 +156,8 @@ $(document).ready(function(){
         countDown();
         quizStart();
 
-        $("#initial-page").css("display", "none");
-        $("#main-question").css("display", "block");
+        $("#initial-page").addClass("hide");
+        $("#main-question").removeClass("hide");
         $(".quiz-container").css("text-align", "initial");
     });
 });
