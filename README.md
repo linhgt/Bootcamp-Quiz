@@ -36,8 +36,4 @@ the highscores board is displayed once player enters their initials. Player can 
 
 Currently the sounds made when player makes a choice have an issue. If a choice is made too fast, no sound will be played because the previous question's sound hasn't finished.
 
-# License
-
-None
-
 
